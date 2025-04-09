@@ -1,19 +1,19 @@
-# API Proxy
+# Vercel API Proxy
 
-API Proxy powered by Vercel.
+API proxies powered by Vercel.
 
 ## Domains
 
 - `cell-api.vercel.app` - Vercel
 - `api.lruihao.cn` - Custom Domain
 
-## Usage
+## Usages
 
-Go to the [API Proxy](https://cell-api.vercel.app/) and use the following endpoints:
+Go to the [Vercel API Proxy](https://cell-api.vercel.app) and select the API you want to use.
 
 - `/avatar/:email` - Gravatar API, same as [Lruihao/vercel-gravatar](https://github.com/Lruihao/vercel-gravatar).
 
-## Example
+## Examples
 
 Get the avatar of the email `fee47a2f4f2cc71f99a02b0a73ecfee0`:
 

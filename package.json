@@ -1,0 +1,30 @@
+{
+  "name": "vercel-proxy",
+  "version": "1.0.0",
+  "description": "API proxies powered by Vercel.",
+  "homepage": "https://github.com/Lruihao/vercel-proxy#readme",
+  "bugs": {
+    "url": "https://github.com/Lruihao/vercel-proxy/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lruihao/vercel-proxy.git"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "vercel",
+    "proxy",
+    "api",
+    "serverless"
+  ],
+  "author": "Lruihao (https://github.com/Lruihao)",
+  "license": "MIT",
+  "packageManager": "pnpm@10.5.2",
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "markdown-it": "^14.1.0",
+    "typescript": "^5.8.3"
+  }
+}
