@@ -1,19 +1,17 @@
 {
   "name": "vercel-proxy",
   "version": "1.0.0",
+  "packageManager": "pnpm@10.5.2",
   "description": "API proxies powered by Vercel.",
+  "author": "Lruihao (https://github.com/Lruihao)",
+  "license": "MIT",
   "homepage": "https://github.com/Lruihao/vercel-proxy#readme",
-  "bugs": {
-    "url": "https://github.com/Lruihao/vercel-proxy/issues"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Lruihao/vercel-proxy.git"
   },
-  "scripts": {
-    "build": "tsc",
-    "lint": "eslint",
-    "lint:fix": "eslint --fix"
+  "bugs": {
+    "url": "https://github.com/Lruihao/vercel-proxy/issues"
   },
   "keywords": [
     "vercel",
@@ -21,14 +19,17 @@
     "api",
     "serverless"
   ],
-  "author": "Lruihao (https://github.com/Lruihao)",
-  "license": "MIT",
-  "packageManager": "pnpm@10.5.2",
+  "scripts": {
+    "build": "tsc",
+    "gr": "npm run build && node dist/generate.js",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
+  },
   "devDependencies": {
-    "@types/node": "^22.14.0",
-    "markdown-it": "^14.1.0",
-    "typescript": "^5.8.3",
     "@antfu/eslint-config": "^4.11.0",
-    "eslint": "^9.23.0"
+    "@types/node": "^22.14.0",
+    "eslint": "^9.23.0",
+    "markdown-it": "^14.1.0",
+    "typescript": "^5.8.3"
   }
 }

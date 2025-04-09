@@ -1,10 +1,10 @@
 /**
  * whether the hostname is allowed
- * @param {String} hostname example.com
+ * @param {string} hostname example.com
  * @param {Array} allowedReferrers allowed referrers
- * @returns
+ * @returns {boolean} true if the hostname is allowed
  */
-export function isAllowedHost(hostname, allowedReferrers = []) {
+export function isAllowedHost(hostname: string, allowedReferrers: string[] = []) {
   if (allowedReferrers.length === 0) {
     return true
   }
@@ -24,36 +24,38 @@ export function isAllowedHost(hostname, allowedReferrers = []) {
 
 /**
  * fetch and apply the response
- * @param {Object} request Vercel Edge Function request
- * @param {String} host the upstream host to fetch
+ * @param {object} request Vercel Edge Function request
+ * @param {string} host the upstream host to fetch
  * @param {Array} allowedReferrers allowed referrers
- * @returns
+ * @returns {Promise<Response>} the response
  */
-export async function fetchAndApply(request, host, allowedReferrers = []) {
+export async function fetchAndApply(request: any, host: string, allowedReferrers: string[] = []): Promise<Response> {
   let response = null
-  let url = new URL(request.url)
+  const url = new URL(request.url)
 
   url.host = host
-  let method = request.method
-  let request_headers = request.headers
-  let new_request_headers = new Headers(request_headers)
+  const method = request.method
+  const request_headers = request.headers
+  const new_request_headers = new Headers(request_headers)
   new_request_headers.set('Host', host)
   new_request_headers.set('Referer', url.href)
-  let original_response = await fetch(url.href, {
-    method: method,
+  const original_response = await fetch(url.href, {
+    method,
     headers: new_request_headers,
   })
 
-  let original_response_clone = original_response.clone()
+  const original_response_clone = original_response.clone()
   let original_text = null
-  let response_headers = original_response.headers
-  let new_response_headers = new Headers(response_headers)
-  let status = original_response.status
+  const response_headers = original_response.headers
+  const new_response_headers = new Headers(response_headers)
+  const status = original_response.status
 
   const hostname = (() => {
     try {
       return new URL(request.headers.get('Referer')).hostname
-    } catch (e) {
+    }
+    catch (e) {
+      console.error(e)
       return ''
     }
   })()
