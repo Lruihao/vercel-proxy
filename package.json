@@ -1,5 +1,6 @@
 {
   "name": "vercel-proxy",
+  "type": "module",
   "version": "1.0.0",
   "packageManager": "pnpm@10.5.2",
   "description": "API proxies powered by Vercel.",
@@ -20,16 +21,17 @@
     "serverless"
   ],
   "scripts": {
-    "build": "tsc",
-    "gr": "npm run build && node dist/generate.js",
+    "gr": "tsx generate.ts",
     "lint": "eslint",
     "lint:fix": "eslint --fix"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.11.0",
+    "@types/markdown-it": "^14.1.2",
     "@types/node": "^22.14.0",
     "eslint": "^9.23.0",
     "markdown-it": "^14.1.0",
+    "tsx": "^4.19.3",
     "typescript": "^5.8.3"
   }
 }

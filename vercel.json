@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/avatar/(.*)", "destination": "dist/api/gravatar" }
+    { "source": "/avatar/(.*)", "destination": "api/gravatar" }
   ]
 }

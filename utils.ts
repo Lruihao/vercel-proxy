@@ -24,12 +24,12 @@ export function isAllowedHost(hostname: string, allowedReferrers: string[] = [])
 
 /**
  * fetch and apply the response
- * @param {object} request Vercel Edge Function request
+ * @param {Request} request Vercel Edge Function request
  * @param {string} host the upstream host to fetch
  * @param {Array} allowedReferrers allowed referrers
  * @returns {Promise<Response>} the response
  */
-export async function fetchAndApply(request: any, host: string, allowedReferrers: string[] = []): Promise<Response> {
+export async function fetchAndApply(request: Request, host: string, allowedReferrers: string[] = []): Promise<Response> {
   let response = null
   const url = new URL(request.url)
 
@@ -52,7 +52,8 @@ export async function fetchAndApply(request: any, host: string, allowedReferrers
 
   const hostname = (() => {
     try {
-      return new URL(request.headers.get('Referer')).hostname
+      const referer = request.headers.get('Referer') || ''
+      return new URL(referer).hostname
     }
     catch (e) {
       console.error(e)
