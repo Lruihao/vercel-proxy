@@ -1,8 +1,8 @@
 /**
  * whether the hostname is allowed
- * @param {String} hostname example.com
+ * @param {string} hostname example.com
  * @param {Array} allowedReferrers allowed referrers
- * @returns {Boolean} true if the hostname is allowed
+ * @returns {boolean} true if the hostname is allowed
  */
 export function isAllowedHost(hostname: string, allowedReferrers: string[] = []) {
   if (allowedReferrers.length === 0) {
@@ -25,17 +25,19 @@ export function isAllowedHost(hostname: string, allowedReferrers: string[] = [])
 /**
  * fetch and apply the response
  * @param {Request} request Vercel Edge Function request
- * @param {String} host the upstream host to fetch
- * @param {String} prefix the prefix to be used
- * @param {Array} allowedReferrers allowed referrers
+ * @param {string} host the upstream host to fetch
+ * @param {string} [prefix] the prefix to be used
+ * @param {Array} [allowedReferrers] allowed referrers
  * @returns {Promise<Response>} the response
  */
-export async function requestProxy(request: Request, host: string, prefix: string, allowedReferrers: string[] = []): Promise<Response> {
+export async function requestProxy(request: Request, host: string, prefix: string = '', allowedReferrers: string[] = []): Promise<Response> {
   let response = null
   const url = new URL(request.url)
 
   url.host = host
-  url.pathname = url.pathname.replace(new RegExp(`^/${prefix}/`), '/')
+  if (prefix) {
+    url.pathname = url.pathname.replace(new RegExp(`^/${prefix}/`), '/')
+  }
   const method = request.method
   const request_headers = request.headers
   const new_request_headers = new Headers(request_headers)
@@ -71,7 +73,7 @@ export async function requestProxy(request: Request, host: string, prefix: strin
     })
   }
 
-  new_response_headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+  new_response_headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE, PATCH, HEAD')
   new_response_headers.set('Access-Control-Allow-Headers', 'Content-Type')
   new_response_headers.set('Cache-Control', 'max-age=600, s-maxage=2592000, stale-while-revalidate')
   new_response_headers.delete('link')
