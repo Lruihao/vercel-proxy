@@ -1,8 +1,8 @@
 /**
  * whether the hostname is allowed
- * @param {string} hostname example.com
+ * @param {String} hostname example.com
  * @param {Array} allowedReferrers allowed referrers
- * @returns {boolean} true if the hostname is allowed
+ * @returns {Boolean} true if the hostname is allowed
  */
 export function isAllowedHost(hostname: string, allowedReferrers: string[] = []) {
   if (allowedReferrers.length === 0) {
@@ -25,20 +25,23 @@ export function isAllowedHost(hostname: string, allowedReferrers: string[] = [])
 /**
  * fetch and apply the response
  * @param {Request} request Vercel Edge Function request
- * @param {string} host the upstream host to fetch
+ * @param {String} host the upstream host to fetch
+ * @param {String} prefix the prefix to be used
  * @param {Array} allowedReferrers allowed referrers
  * @returns {Promise<Response>} the response
  */
-export async function fetchAndApply(request: Request, host: string, allowedReferrers: string[] = []): Promise<Response> {
+export async function requestProxy(request: Request, host: string, prefix: string, allowedReferrers: string[] = []): Promise<Response> {
   let response = null
   const url = new URL(request.url)
 
   url.host = host
+  url.pathname = url.pathname.replace(new RegExp(`^/${prefix}/`), '/')
   const method = request.method
   const request_headers = request.headers
   const new_request_headers = new Headers(request_headers)
   new_request_headers.set('Host', host)
   new_request_headers.set('Referer', url.href)
+  new_request_headers.set('Cookie', request_headers.get('Cookie') || '')
   const original_response = await fetch(url.href, {
     method,
     headers: new_request_headers,

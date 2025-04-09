@@ -1,4 +1,4 @@
-import { fetchAndApply } from '../utils.js'
+import { requestProxy } from '../utils.js'
 
 // www.gravatar.com
 const upstream = 'gravatar.loli.net'
@@ -17,5 +17,5 @@ export const config = {
 }
 
 export default async function (request: Request): Promise<Response> {
-  return await fetchAndApply(request, upstream, allowedReferrers)
+  return await requestProxy(request, upstream, 'gravatar', allowedReferrers)
 }
