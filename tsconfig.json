@@ -10,7 +10,7 @@
     "skipLibCheck": true
   },
   "include": [
-    "src/**/*.ts",
+    "api/**/*.ts",
     "generate.ts",
     "utils.ts"
   ],
