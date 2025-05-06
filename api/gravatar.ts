@@ -1,4 +1,4 @@
-import { requestProxy } from '../utils.js'
+import { requestProxy } from '../utils/index.js'
 
 // www.gravatar.com
 const upstream = 'gravatar.loli.net'

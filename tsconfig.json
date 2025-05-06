@@ -11,8 +11,8 @@
   },
   "include": [
     "api/**/*.ts",
-    "generate.ts",
-    "utils.ts"
+    "utils/**/*.ts",
+    "generate.ts"
   ],
   "exclude": [
     "node_modules"

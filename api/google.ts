@@ -1,4 +1,4 @@
-import { requestProxy } from '../utils.js'
+import { requestProxy } from '../utils/index.js'
 
 const upstream = 'www.google.com'
 
