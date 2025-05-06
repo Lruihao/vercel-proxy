@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/netease/comment", "destination": "api/netease/index" },
     { "source": "/gravatar/avatar/(.*)", "destination": "api/gravatar" },
     { "source": "/google/(.*)", "destination": "api/google" }
   ]

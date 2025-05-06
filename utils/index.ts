@@ -87,3 +87,51 @@ export async function requestProxy(request: Request, host: string, prefix: strin
 
   return response
 }
+
+/**
+ * response json
+ * @param {any} data the data to be returned
+ * @param {number} status the status code
+ * @returns {Response} the response
+ */
+export function responseJSON(data: any, status: number = 200): Response {
+  return new Response(JSON.stringify(data), {
+    headers: {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-store',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, DELETE, PATCH, HEAD',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+    status,
+  })
+}
+
+/**
+ * response text
+ * @param {string} text the text to be returned
+ * @param {number} status the status code
+ * @returns {Response} the response
+ */
+export function responseText(text: string, status: number = 200): Response {
+  return new Response(text, {
+    headers: {
+      'Content-Type': 'text/plain',
+      'Cache-Control': 'no-store',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, DELETE, PATCH, HEAD',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+    status,
+  })
+}
+
+/**
+ * get random item from array
+ * @param {Array} arr the array to be used
+ * @returns {any} the random item
+ */
+export function getRandomItem(arr: any): any {
+  const randomIndex = Math.floor(Math.random() * arr.length)
+  return arr[randomIndex]
+}
