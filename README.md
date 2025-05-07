@@ -2,6 +2,8 @@
 
 API proxies powered by Vercel.
 
+[toc]
+
 ## Hosts
 
 - <https://api.lruihao.cn>

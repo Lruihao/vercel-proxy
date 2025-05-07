@@ -1,18 +1,22 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import markdownit from 'markdown-it'
+import markdownIt from 'markdown-it'
+import anchor from 'markdown-it-anchor'
+import toc from 'markdown-it-toc-done-right'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const md = markdownit()
 const readmePath = path.join(__dirname, './README.md')
 const outputPath = path.join(__dirname, './public/index.html')
 const readmeContent = fs.readFileSync(readmePath, 'utf-8')
-const styleContent
-= `body {
+const styleContent = `
+  body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+  }
+  summary {
+    font-weight: bold;
   }
   .markdown-body {
     padding: 20px 10%;
@@ -21,7 +25,24 @@ const styleContent
     }
   }
 `.replace(/\s+/g, ' ').trim()
-const htmlContent = md.render(readmeContent)
+let tocHtml = ''
+const htmlContent = markdownIt()
+  .use(anchor, {
+    level: 2,
+    permalink: anchor.permalink.ariaHidden({
+      placement: 'before',
+      symbol: '§',
+    }),
+  })
+  .use(toc, {
+    listType: 'ul',
+    level: 2,
+    callback: (t: string) => {
+      tocHtml = t
+    },
+  })
+  .render(readmeContent)
+  .replace(tocHtml, `<details><summary>Table of Contents</summary>${tocHtml}</details>`)
 const htmlTemplate = `<!DOCTYPE html>
 <html lang="en">
 <head>
