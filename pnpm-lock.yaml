@@ -26,6 +26,9 @@ importers:
       markdown-it-anchor:
         specifier: ^9.2.0
         version: 9.2.0(@types/markdown-it@14.1.2)(markdown-it@14.1.0)
+      markdown-it-prism:
+        specifier: ^3.0.0
+        version: 3.0.0
       markdown-it-toc-done-right:
         specifier: ^4.2.0
         version: 4.2.0
@@ -1179,6 +1182,10 @@ packages:
       '@types/markdown-it': '*'
       markdown-it: '*'
 
+  markdown-it-prism@3.0.0:
+    resolution: {integrity: sha512-M0LQsbVzjbzufV95nYdtbs99Sm/8f7zLnqFblb5yQZtFTGLM+y6hxMZ8BdujY3FFqVvTbnZ52/uoicQUqZUYbg==}
+    engines: {node: '>=20.0.0'}
+
   markdown-it-toc-done-right@4.2.0:
     resolution: {integrity: sha512-UB/IbzjWazwTlNAX0pvWNlJS8NKsOQ4syrXZQ/C72j+jirrsjVRT627lCaylrKJFBQWfRsPmIVQie8x38DEhAQ==}
 
@@ -1440,6 +1447,10 @@ packages:
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+
+  prismjs@1.30.0:
+    resolution: {integrity: sha512-DEvV2ZF2r2/63V+tK8hQvrR2ZGn10srHbXviTlcv7Kpzw8jWiNTqbVgjO3IY8RxrrOUF8VPMQQFysYYYv0YZxw==}
+    engines: {node: '>=6'}
 
   punycode.js@2.3.1:
     resolution: {integrity: sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA==}
@@ -2840,6 +2851,10 @@ snapshots:
       '@types/markdown-it': 14.1.2
       markdown-it: 14.1.0
 
+  markdown-it-prism@3.0.0:
+    dependencies:
+      prismjs: 1.30.0
+
   markdown-it-toc-done-right@4.2.0: {}
 
   markdown-it@14.1.0:
@@ -3278,6 +3293,8 @@ snapshots:
       source-map-js: 1.2.1
 
   prelude-ls@1.2.1: {}
+
+  prismjs@1.30.0: {}
 
   punycode.js@2.3.1: {}
 

@@ -1,6 +1,6 @@
 # [Vercel API Proxy](https://github.com/Lruihao/vercel-proxy)
 
-API proxies powered by Vercel.
+> API proxies powered by Vercel.
 
 [toc]
 
